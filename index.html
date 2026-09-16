@@ -3,52 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VERNO</title>
+<title>VERNO | Luxury Marketplace</title>
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    background:#111;
-    color:white;
-    font-family:Arial,sans-serif;
-    text-align:center;
-    margin:0;
+background:#111;
+color:white;
 }
+
 header{
-    padding:40px;
-    border-bottom:2px solid gold;
+background:black;
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #333;
 }
-h1{
-    color:gold;
-    font-size:50px;
+
+.logo{
+font-size:30px;
+font-weight:bold;
+color:gold;
 }
-section{
-    padding:40px 20px;
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
 }
-.button{
-    display:inline-block;
-    background:gold;
-    color:black;
-    padding:12px 24px;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
+
+.hero{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:20px;
+color:gold;
+}
+
+.hero p{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.btn{
+background:gold;
+color:black;
+padding:15px 30px;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+}
+
+.section{
+padding:80px 10%;
+}
+
+.section h2{
+text-align:center;
+margin-bottom:40px;
+color:gold;
+font-size:40px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:#1b1b1b;
+border-radius:15px;
+overflow:hidden;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.price{
+color:gold;
+font-size:20px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.sell{
+background:#181818;
+text-align:center;
+padding:80px 10%;
+}
+
+.sell h2{
+color:gold;
+margin-bottom:20px;
+}
+
+footer{
+padding:30px;
+text-align:center;
+background:black;
+border-top:1px solid #333;
 }
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1>VERNO</h1>
-    <p>중고 명품 매입 · 위탁 판매</p>
+<div class="logo">VERNO</div>
+
+<nav>
+<a href="#">홈</a>
+<a href="#">상품</a>
+<a href="#">위탁판매</a>
+<a href="#">문의</a>
+</nav>
 </header>
 
-<section>
-    <h2>정품 명품 거래 플랫폼</h2>
-    <p>안전하고 믿을 수 있는 거래를 제공합니다.</p>
+<section class="hero">
+<h1>Luxury Resale</h1>
+<p>정품 명품 매입 · 위탁판매 플랫폼</p>
+<a class="btn" href="#">상품 보기</a>
 </section>
 
-<section>
-    <a class="button" href="#">문의하기</a>
+<section class="section">
+<h2>인기 상품</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop">
+<div class="card-content">
+<h3>Louis Vuitton Bag</h3>
+<p>상태 A+</p>
+<div class="price">₩1,890,000</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
+<div class="card-content">
+<h3>Balenciaga Sneakers</h3>
+<p>상태 A</p>
+<div class="price">₩690,000</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop">
+<div class="card-content">
+<h3>Rolex Watch</h3>
+<p>상태 S</p>
+<div class="price">₩12,500,000</div>
+</div>
+</div>
+
+</div>
 </section>
+
+<section class="sell">
+<h2>명품 위탁판매 신청</h2>
+<p>판매하고 싶은 명품이 있으신가요?</p>
+<br>
+<a class="btn" href="#">카카오톡 문의</a>
+</section>
+
+<footer>
+<p>© 2026 VERNO. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
