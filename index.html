@@ -1,0 +1,4402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>VERNO — Curated Luxury Resale</title>
+
+<style>
+/* =========================================================
+   VERNO
+========================================================= */
+
+:root{
+  --black:#111;
+  --gray:#777;
+  --lightgray:#f6f6f4;
+  --line:#e8e8e5;
+  --white:#fff;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    Arial,
+    sans-serif;
+
+  background:#fff;
+  color:#111;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+.hidden{
+  display:none !important;
+}
+
+/* =========================================================
+   BRAND LOGO
+========================================================= */
+
+.brand-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  border:0;
+  background:none;
+  color:#111;
+}
+
+.brand-symbol{
+  position:relative;
+  width:28px;
+  height:27px;
+}
+
+.brand-symbol::before,
+.brand-symbol::after{
+  content:"";
+  position:absolute;
+  top:1px;
+
+  width:2px;
+  height:25px;
+
+  background:#111;
+}
+
+.brand-symbol::before{
+  left:8px;
+  transform:rotate(-23deg);
+}
+
+.brand-symbol::after{
+  right:8px;
+  transform:rotate(23deg);
+}
+
+.brand-name{
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:23px;
+  letter-spacing:6px;
+}
+
+/* =========================================================
+   NOTICE
+========================================================= */
+
+.notice{
+  height:29px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#f5f5f3;
+
+  font-size:9px;
+  letter-spacing:.5px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+
+  background:rgba(255,255,255,.98);
+  border-bottom:1px solid var(--line);
+}
+
+.header-main{
+  max-width:1450px;
+  height:76px;
+
+  margin:auto;
+  padding:0 30px;
+
+  display:grid;
+  grid-template-columns:250px 1fr 300px;
+  align-items:center;
+  gap:25px;
+}
+
+/* SEARCH */
+
+.search-wrap{
+  position:relative;
+  width:min(470px,100%);
+  justify-self:center;
+}
+
+.search-wrap input{
+  position:relative;
+  z-index:2;
+
+  width:100%;
+  height:43px;
+
+  padding:0 42px 0 5px;
+
+  border:0;
+  border-bottom:1px solid #222;
+
+  border-radius:0;
+  outline:none;
+
+  background:white;
+
+  color:#111;
+
+  font-size:12px;
+
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+.search-wrap input:focus{
+  border-bottom:2px solid #111;
+}
+
+.search-button{
+  position:absolute;
+  z-index:3;
+
+  right:4px;
+  top:6px;
+
+  width:32px;
+  height:32px;
+
+  border:0;
+  background:white;
+
+  font-size:19px;
+}
+
+/* ACCOUNT */
+
+.account-menu{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:17px;
+}
+
+.text-button{
+  border:0;
+  background:none;
+
+  color:#555;
+  font-size:10px;
+}
+
+.cart-count{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:18px;
+  height:18px;
+
+  margin-left:3px;
+
+  padding:0 5px;
+
+  border-radius:20px;
+
+  background:#111;
+  color:#fff;
+
+  font-size:8px;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+  max-width:1450px;
+  height:50px;
+
+  margin:auto;
+  padding:0 30px;
+
+  display:flex;
+  align-items:center;
+  gap:24px;
+
+  overflow-x:auto;
+}
+
+.nav::-webkit-scrollbar{
+  display:none;
+}
+
+.hamburger{
+  flex:none;
+
+  width:29px;
+  height:29px;
+
+  padding:4px 1px;
+
+  border:0;
+  background:none;
+}
+
+.hamburger span{
+  display:block;
+
+  width:25px;
+  height:1px;
+
+  margin:5px 0;
+
+  background:#111;
+}
+
+.nav button:not(.hamburger){
+  flex:none;
+
+  border:0;
+  background:none;
+
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  font-weight:700;
+
+  letter-spacing:.5px;
+}
+
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:610px;
+
+  display:flex;
+  align-items:center;
+
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.44),rgba(0,0,0,.02)),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+
+  color:#fff;
+}
+
+.hero-inner{
+  width:100%;
+  max-width:1450px;
+
+  margin:auto;
+  padding:0 50px;
+}
+
+.hero-small{
+  margin-bottom:18px;
+
+  font-size:9px;
+  letter-spacing:5px;
+}
+
+.hero-logo{
+  font-family:Georgia,serif;
+  font-size:70px;
+  font-weight:400;
+
+  letter-spacing:12px;
+}
+
+.hero-copy{
+  margin-top:15px;
+
+  font-size:12px;
+  line-height:1.8;
+}
+
+.hero-shop{
+  margin-top:27px;
+
+  padding:15px 26px;
+
+  border:0;
+  background:#fff;
+
+  font-size:9px;
+  font-weight:700;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section{
+  max-width:1450px;
+
+  margin:auto;
+  padding:80px 30px 110px;
+}
+
+.section-title{
+  margin-bottom:28px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+
+.section-title h2{
+  margin:0;
+
+  font-family:Georgia,serif;
+  font-size:25px;
+  font-weight:400;
+
+  letter-spacing:2px;
+}
+
+.section-title p{
+  margin:7px 0 0;
+
+  color:#999;
+
+  font-size:10px;
+}
+
+.link-button{
+  border:0;
+  border-bottom:1px solid #111;
+
+  padding:0 0 4px;
+
+  background:none;
+
+  font-size:9px;
+}
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:45px 12px;
+}
+
+.product-card{
+  cursor:pointer;
+}
+
+.product-image{
+  position:relative;
+
+  aspect-ratio:3/4;
+
+  overflow:hidden;
+
+  background:#f4f4f2;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  transition:.3s;
+}
+
+.product-card:hover .product-image img{
+  transform:scale(1.02);
+}
+
+.grade{
+  position:absolute;
+
+  left:8px;
+  bottom:8px;
+
+  padding:5px 8px;
+
+  background:rgba(255,255,255,.94);
+
+  font-size:8px;
+  font-weight:700;
+}
+
+.product-text{
+  padding-top:11px;
+}
+
+.product-brand{
+  margin-bottom:5px;
+
+  font-size:9px;
+  font-weight:700;
+}
+
+.product-name{
+  margin-bottom:7px;
+
+  font-size:11px;
+}
+
+.product-price{
+  font-size:12px;
+  font-weight:600;
+}
+
+.auth-label{
+  margin-top:5px;
+
+  color:#aaa;
+
+  font-size:8px;
+  letter-spacing:.6px;
+}
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+.shop-head{
+  max-width:1450px;
+
+  margin:auto;
+  padding:55px 30px 20px;
+}
+
+.shop-head h1{
+  margin:0;
+
+  font-family:Georgia,serif;
+  font-size:32px;
+  font-weight:400;
+
+  letter-spacing:2px;
+}
+
+.shop-head p{
+  margin-top:8px;
+
+  color:#999;
+
+  font-size:10px;
+}
+
+.filters{
+  max-width:1450px;
+
+  margin:auto;
+  padding:5px 30px 30px;
+
+  display:flex;
+  gap:7px;
+
+  overflow:auto;
+}
+
+.filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filter{
+  flex:none;
+
+  padding:9px 15px;
+
+  border:1px solid #ddd;
+  border-radius:50px;
+
+  background:#fff;
+
+  font-size:9px;
+}
+
+.filter.active{
+  border-color:#111;
+
+  background:#111;
+  color:#fff;
+}
+
+/* =========================================================
+   SIDE DRAWER
+========================================================= */
+
+.drawer-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+
+  background:rgba(0,0,0,.37);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.25s;
+}
+
+.drawer-overlay.open{
+  opacity:1;
+  visibility:visible;
+}
+
+.drawer{
+  position:absolute;
+
+  top:0;
+  bottom:0;
+  left:0;
+
+  width:min(450px,88vw);
+
+  padding:28px 23px 50px;
+
+  overflow-y:auto;
+
+  background:#fff;
+
+  transform:translateX(-100%);
+  transition:.3s ease;
+}
+
+.drawer-overlay.open .drawer{
+  transform:translateX(0);
+}
+
+.drawer-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+
+  margin-bottom:24px;
+}
+
+.drawer-title{
+  font-size:19px;
+  font-weight:600;
+}
+
+.close-button{
+  border:0;
+  background:none;
+
+  font-size:28px;
+  font-weight:300;
+}
+
+.drawer-auth{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.drawer-auth button{
+  height:44px;
+
+  border:1px solid #ddd;
+
+  background:#fff;
+
+  font-size:10px;
+}
+
+.drawer-auth .primary{
+  border-color:#111;
+
+  background:#111;
+  color:#fff;
+}
+
+.quick{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:5px;
+
+  margin-top:7px;
+}
+
+.quick button{
+  min-height:45px;
+
+  padding:4px;
+
+  border:1px solid #e4e4e4;
+
+  background:#fff;
+
+  font-size:8px;
+}
+
+.drawer-section{
+  margin-top:42px;
+}
+
+.drawer-section-title{
+  margin-bottom:12px;
+
+  font-family:Georgia,serif;
+  font-size:17px;
+}
+
+.drawer-row{
+  width:100%;
+  min-height:47px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border:0;
+  border-bottom:1px solid #eee;
+
+  background:#fff;
+
+  font-size:11px;
+  font-weight:600;
+
+  text-align:left;
+}
+
+.brand-sub{
+  display:none;
+
+  padding:10px 0 15px 13px;
+}
+
+.brand-sub.open{
+  display:block;
+}
+
+.brand-sub button{
+  display:block;
+
+  width:100%;
+
+  padding:8px 0;
+
+  border:0;
+  background:#fff;
+
+  color:#666;
+
+  text-align:left;
+
+  font-size:10px;
+}
+
+.drawer-bottom{
+  margin-top:35px;
+
+  border-top:1px solid #ddd;
+}
+
+.drawer-bottom button{
+  width:100%;
+  height:48px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border:0;
+  border-bottom:1px solid #eee;
+
+  background:#fff;
+
+  font-size:11px;
+}
+
+/* =========================================================
+   DETAIL
+========================================================= */
+
+.detail{
+  position:fixed;
+  inset:0;
+  z-index:900;
+
+  display:none;
+
+  overflow-y:auto;
+
+  background:#fff;
+}
+
+.detail.open{
+  display:block;
+}
+
+.detail-header{
+  position:sticky;
+  top:0;
+  z-index:3;
+
+  height:64px;
+
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+
+  padding:0 25px;
+
+  background:#fff;
+
+  border-bottom:1px solid var(--line);
+}
+
+.detail-header button{
+  justify-self:start;
+
+  border:0;
+  background:none;
+
+  font-size:10px;
+}
+
+.detail-header strong{
+  font-family:Georgia,serif;
+
+  letter-spacing:5px;
+}
+
+.detail-layout{
+  max-width:1300px;
+
+  margin:auto;
+  padding:45px 30px 100px;
+
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:70px;
+}
+
+.detail-main-image{
+  width:100%;
+  aspect-ratio:1/1.15;
+
+  object-fit:cover;
+
+  background:#f5f5f5;
+}
+
+.thumb-list{
+  margin-top:8px;
+
+  display:flex;
+  gap:7px;
+}
+
+.thumb{
+  width:80px;
+  height:100px;
+
+  object-fit:cover;
+
+  border:1px solid transparent;
+}
+
+.thumb.selected{
+  border-color:#111;
+}
+
+.detail-brand{
+  margin-top:10px;
+
+  font-size:9px;
+  font-weight:700;
+}
+
+.detail-name{
+  margin:11px 0 0;
+
+  font-size:25px;
+  font-weight:500;
+
+  line-height:1.4;
+}
+
+.detail-price{
+  margin-top:18px;
+
+  font-size:20px;
+  font-weight:600;
+}
+
+.detail-table{
+  margin-top:30px;
+
+  border-top:1px solid #ddd;
+}
+
+.detail-row{
+  min-height:48px;
+
+  display:grid;
+  grid-template-columns:125px 1fr;
+  align-items:center;
+
+  border-bottom:1px solid #eee;
+
+  font-size:10px;
+}
+
+.detail-row span:first-child{
+  color:#888;
+}
+
+.size-guide-button{
+  margin-top:18px;
+
+  padding:10px 15px;
+
+  border:1px solid #ddd;
+
+  background:#fafafa;
+
+  font-size:9px;
+}
+
+.option-title{
+  margin-top:30px;
+  margin-bottom:10px;
+
+  font-size:9px;
+  font-weight:700;
+}
+
+.size-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.size-option{
+  min-width:80px;
+
+  padding:10px 12px;
+
+  border:1px solid #ddd;
+
+  background:#fff;
+
+  font-size:9px;
+}
+
+.size-option.selected{
+  border-color:#111;
+
+  background:#111;
+  color:#fff;
+}
+
+.size-option:disabled{
+  color:#bbb;
+
+  background:#f5f5f5;
+}
+
+.stock{
+  display:block;
+
+  margin-top:4px;
+
+  font-size:8px;
+}
+
+.quantity-line{
+  margin-top:24px;
+
+  padding:18px 0;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+
+  font-size:10px;
+}
+
+.qty{
+  display:flex;
+}
+
+.qty button,
+.qty span{
+  width:35px;
+  height:35px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid #ddd;
+
+  background:#fff;
+
+  font-size:10px;
+}
+
+.qty span{
+  border-left:0;
+  border-right:0;
+}
+
+.detail-total{
+  padding:21px 0;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  font-size:10px;
+}
+
+.detail-total strong{
+  font-size:20px;
+}
+
+.detail-actions{
+  display:grid;
+  grid-template-columns:54px 1fr 1fr;
+  gap:7px;
+}
+
+.detail-actions button{
+  height:53px;
+
+  border:0;
+
+  font-size:10px;
+  font-weight:600;
+}
+
+.wish-button{
+  border:1px solid #ddd !important;
+
+  background:#fff;
+
+  font-size:18px !important;
+}
+
+.cart-button{
+  background:#eee;
+}
+
+.buy-button{
+  background:#111;
+  color:#fff;
+}
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.42);
+}
+
+.modal-overlay.open{
+  display:flex;
+}
+
+/* AUTH */
+
+.auth-modal{
+  position:relative;
+
+  width:min(430px,100%);
+
+  padding:38px 35px;
+
+  background:#fff;
+}
+
+.auth-x{
+  position:absolute;
+
+  top:12px;
+  right:14px;
+
+  border:0;
+  background:#fff;
+
+  font-size:25px;
+}
+
+.auth-symbol{
+  width:42px;
+  height:42px;
+
+  margin:0 auto 9px;
+
+  position:relative;
+}
+
+.auth-symbol::before,
+.auth-symbol::after{
+  content:"";
+
+  position:absolute;
+  top:3px;
+
+  width:2px;
+  height:36px;
+
+  background:#111;
+}
+
+.auth-symbol::before{
+  left:12px;
+  transform:rotate(-24deg);
+}
+
+.auth-symbol::after{
+  right:12px;
+  transform:rotate(24deg);
+}
+
+.auth-brand{
+  text-align:center;
+
+  font-family:Georgia,serif;
+  font-size:22px;
+
+  letter-spacing:6px;
+}
+
+.auth-subtitle{
+  margin-top:8px;
+
+  color:#999;
+
+  text-align:center;
+
+  font-size:9px;
+}
+
+.auth-tabs{
+  margin-top:28px;
+  margin-bottom:22px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  border-bottom:1px solid #ddd;
+}
+
+.auth-tab{
+  height:42px;
+
+  border:0;
+  border-bottom:2px solid transparent;
+
+  background:#fff;
+
+  color:#aaa;
+
+  font-size:10px;
+}
+
+.auth-tab.active{
+  border-bottom-color:#111;
+
+  color:#111;
+  font-weight:600;
+}
+
+.auth-panel{
+  display:none;
+}
+
+.auth-panel.active{
+  display:block;
+}
+
+/*
+  중요:
+  입력창 위를 덮는 가상 요소/overlay 없음.
+  pointer-events 정상.
+*/
+
+.auth-input{
+  position:relative;
+  z-index:5;
+
+  display:block;
+
+  width:100%;
+  height:48px;
+
+  margin-bottom:8px;
+  padding:0 13px;
+
+  border:1px solid #ddd;
+  border-radius:0;
+
+  outline:none;
+
+  background:#fff;
+  color:#111;
+
+  font-size:11px;
+
+  pointer-events:auto;
+
+  -webkit-user-select:text;
+  user-select:text;
+
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+.auth-input:focus{
+  border-color:#111;
+}
+
+.auth-submit{
+  width:100%;
+  height:49px;
+
+  margin-top:5px;
+
+  border:0;
+
+  background:#111;
+  color:#fff;
+
+  font-size:11px;
+  font-weight:600;
+}
+
+.auth-note{
+  margin-top:11px;
+
+  color:#999;
+
+  font-size:9px;
+  line-height:1.7;
+}
+
+/* =========================================================
+   SIZE GUIDE
+========================================================= */
+
+.size-modal{
+  width:min(850px,100%);
+  max-height:88vh;
+
+  overflow:auto;
+
+  padding:28px;
+
+  background:#fff;
+}
+
+.size-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.size-head h2{
+  margin:0;
+
+  font-size:17px;
+  font-weight:500;
+}
+
+.size-head button{
+  border:0;
+  background:#fff;
+
+  font-size:25px;
+}
+
+.table-title{
+  margin:28px 0 10px;
+
+  font-size:11px;
+  font-weight:600;
+}
+
+.size-table{
+  width:100%;
+
+  border-collapse:collapse;
+
+  font-size:9px;
+  text-align:center;
+}
+
+.size-table td,
+.size-table th{
+  padding:14px 6px;
+
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+}
+
+.size-table th:first-child,
+.size-table td:first-child{
+  background:#f5f5f5;
+}
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart-page{
+  max-width:1150px;
+
+  margin:auto;
+  padding:65px 30px 100px;
+}
+
+.cart-page h1,
+.checkout-page h1{
+  font-family:Georgia,serif;
+  font-weight:400;
+
+  letter-spacing:2px;
+}
+
+.cart-layout{
+  display:grid;
+  grid-template-columns:1fr 350px;
+  gap:50px;
+}
+
+.empty{
+  padding:30px 0;
+
+  color:#999;
+
+  font-size:11px;
+}
+
+.cart-item{
+  padding:18px 0;
+
+  display:grid;
+  grid-template-columns:110px 1fr auto;
+  gap:18px;
+
+  border-bottom:1px solid #eee;
+}
+
+.cart-item img{
+  width:110px;
+  height:140px;
+
+  object-fit:cover;
+}
+
+.cart-item-brand{
+  font-size:9px;
+  font-weight:700;
+}
+
+.cart-item-name{
+  margin:7px 0;
+
+  font-size:11px;
+}
+
+.cart-option{
+  color:#888;
+
+  font-size:9px;
+}
+
+.cart-price{
+  margin-top:11px;
+
+  font-size:11px;
+  font-weight:600;
+}
+
+.cart-qty{
+  margin-top:12px;
+
+  display:flex;
+}
+
+.cart-qty button,
+.cart-qty span{
+  width:29px;
+  height:29px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid #ddd;
+
+  background:#fff;
+
+  font-size:9px;
+}
+
+.cart-qty span{
+  border-left:0;
+  border-right:0;
+}
+
+.remove{
+  border:0;
+  background:#fff;
+
+  color:#aaa;
+
+  font-size:8px;
+}
+
+.summary{
+  height:max-content;
+
+  padding:25px;
+
+  border:1px solid #ddd;
+}
+
+.summary h3{
+  margin:0 0 24px;
+
+  font-size:12px;
+}
+
+.summary-row{
+  margin:13px 0;
+
+  display:flex;
+  justify-content:space-between;
+
+  font-size:10px;
+}
+
+.summary-total{
+  margin-top:20px;
+  padding-top:18px;
+
+  display:flex;
+  justify-content:space-between;
+
+  border-top:1px solid #ddd;
+
+  font-size:13px;
+  font-weight:700;
+}
+
+.black-button{
+  width:100%;
+  height:51px;
+
+  margin-top:22px;
+
+  border:0;
+
+  background:#111;
+  color:#fff;
+
+  font-size:10px;
+  font-weight:600;
+}
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+.checkout-page{
+  max-width:1000px;
+
+  margin:auto;
+  padding:65px 30px 100px;
+}
+
+.checkout-grid{
+  display:grid;
+  grid-template-columns:1fr 350px;
+  gap:50px;
+}
+
+.checkout-block{
+  margin-bottom:35px;
+}
+
+.checkout-block h3{
+  margin:0 0 15px;
+  padding-bottom:12px;
+
+  border-bottom:1px solid #111;
+
+  font-size:12px;
+}
+
+.checkout-input{
+  position:relative;
+  z-index:1;
+
+  width:100%;
+  height:47px;
+
+  margin-bottom:8px;
+  padding:0 12px;
+
+  border:1px solid #ddd;
+  border-radius:0;
+
+  outline:none;
+
+  background:#fff;
+
+  font-size:11px;
+
+  pointer-events:auto;
+
+  -webkit-user-select:text;
+  user-select:text;
+
+  -webkit-appearance:none;
+}
+
+.checkout-input:focus{
+  border-color:#111;
+}
+
+.pay-options{
+  display:flex;
+  gap:7px;
+
+  flex-wrap:wrap;
+}
+
+.pay-option{
+  padding:12px 17px;
+
+  border:1px solid #ddd;
+
+  background:#fff;
+
+  font-size:9px;
+}
+
+.pay-option.active{
+  border-color:#111;
+
+  background:#111;
+  color:#fff;
+}
+
+.checkout-item{
+  padding:10px 0;
+
+  display:grid;
+  grid-template-columns:55px 1fr;
+
+  gap:10px;
+
+  border-bottom:1px solid #eee;
+}
+
+.checkout-item img{
+  width:55px;
+  height:70px;
+
+  object-fit:cover;
+}
+
+.checkout-item strong{
+  font-size:9px;
+}
+
+.checkout-item div div{
+  margin-top:4px;
+
+  font-size:9px;
+}
+
+/* =========================================================
+   CONSIGN
+========================================================= */
+
+.consign-page{
+  max-width:1150px;
+
+  margin:auto;
+  padding:75px 30px 110px;
+}
+
+.consign-label{
+  color:#999;
+
+  font-size:9px;
+  letter-spacing:3px;
+}
+
+.consign-page h1{
+  margin:10px 0 40px;
+
+  font-size:35px;
+  font-weight:500;
+}
+
+.consign-box{
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+
+  border:1px solid #e5e5e5;
+}
+
+.consign-info{
+  padding:55px;
+}
+
+.consign-info h2{
+  margin:0 0 18px;
+
+  font-size:24px;
+
+  line-height:1.5;
+}
+
+.consign-info p{
+  color:#666;
+
+  font-size:11px;
+  line-height:2;
+}
+
+.steps{
+  margin-top:45px;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.step{
+  padding-top:12px;
+
+  border-top:1px solid #111;
+}
+
+.step small{
+  color:#999;
+
+  font-size:8px;
+}
+
+.step div{
+  margin-top:8px;
+
+  font-size:11px;
+  font-weight:600;
+}
+
+.consign-contact{
+  padding:45px 35px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  background:#f5f5f3;
+}
+
+.consign-contact small{
+  color:#999;
+
+  letter-spacing:2px;
+}
+
+.consign-contact h3{
+  margin:14px 0 5px;
+
+  font-size:12px;
+}
+
+.kakao-id{
+  margin-bottom:22px;
+
+  font-size:20px;
+  font-weight:700;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:35px;
+
+  z-index:5000;
+
+  padding:13px 20px;
+
+  min-width:220px;
+
+  border-radius:3px;
+
+  background:#222;
+  color:#fff;
+
+  text-align:center;
+
+  font-size:10px;
+
+  opacity:0;
+  pointer-events:none;
+
+  transform:translate(-50%,15px);
+
+  transition:.2s;
+}
+
+.toast.show{
+  opacity:1;
+
+  transform:translate(-50%,0);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:50px 30px;
+
+  border-top:1px solid #eee;
+}
+
+.footer-inner{
+  max-width:1450px;
+
+  margin:auto;
+}
+
+.footer-logo{
+  font-family:Georgia,serif;
+
+  letter-spacing:5px;
+}
+
+footer p{
+  color:#aaa;
+
+  font-size:8px;
+  line-height:1.8;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+  .header-main{
+    grid-template-columns:1fr auto;
+  }
+
+  .search-wrap{
+    display:none;
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .detail-layout,
+  .cart-layout,
+  .checkout-grid,
+  .consign-box{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .header-main{
+    height:61px;
+
+    padding:0 13px;
+  }
+
+  .brand-name{
+    font-size:18px;
+
+    letter-spacing:4px;
+  }
+
+  .brand-symbol{
+    width:23px;
+  }
+
+  .account-menu{
+    gap:9px;
+  }
+
+  .desktop-account{
+    display:none;
+  }
+
+  .nav{
+    height:47px;
+
+    padding:0 13px;
+
+    gap:18px;
+  }
+
+  .hero{
+    min-height:500px;
+  }
+
+  .hero-inner{
+    padding:0 23px;
+  }
+
+  .hero-logo{
+    font-size:45px;
+
+    letter-spacing:8px;
+  }
+
+  .section{
+    padding:60px 10px 80px;
+  }
+
+  .product-grid{
+    gap:35px 6px;
+  }
+
+  .shop-head{
+    padding:45px 12px 15px;
+  }
+
+  .filters{
+    padding:5px 11px 25px;
+  }
+
+  .detail-layout{
+    padding:10px 10px 80px;
+
+    gap:20px;
+  }
+
+  .detail-name{
+    font-size:20px;
+  }
+
+  .cart-page,
+  .checkout-page{
+    padding:45px 12px 80px;
+  }
+
+  .cart-item{
+    grid-template-columns:85px 1fr auto;
+
+    gap:11px;
+  }
+
+  .cart-item img{
+    width:85px;
+    height:108px;
+  }
+
+  .consign-page{
+    padding:55px 15px 80px;
+  }
+
+  .consign-info,
+  .consign-contact{
+    padding:32px 23px;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .auth-modal{
+    padding:35px 22px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NOTICE -->
+
+<div class="notice">
+VERNO · CURATED LUXURY RESALE
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="header-main">
+
+<button class="brand-logo" onclick="goHome()">
+
+<span class="brand-symbol"></span>
+
+<span class="brand-name">
+VERNO
+</span>
+
+</button>
+
+
+<div class="search-wrap">
+
+<input
+  id="searchInput"
+  type="search"
+  placeholder="브랜드 또는 상품명을 검색하세요"
+  autocomplete="off"
+>
+
+<button
+  class="search-button"
+  type="button"
+  onclick="runSearch()"
+>
+⌕
+</button>
+
+</div>
+
+
+<div class="account-menu">
+
+<button
+  id="loginHeader"
+  class="text-button desktop-account"
+  type="button"
+  onclick="openAuth('login')"
+>
+LOGIN
+</button>
+
+<button
+  id="joinHeader"
+  class="text-button desktop-account"
+  type="button"
+  onclick="openAuth('signup')"
+>
+JOIN
+</button>
+
+<button
+  class="text-button"
+  type="button"
+  onclick="openCart()"
+>
+CART
+<span id="cartCount" class="cart-count">0</span>
+</button>
+
+</div>
+
+</div>
+
+
+<nav class="nav">
+
+<button
+  class="hamburger"
+  type="button"
+  onclick="openDrawer()"
+>
+<span></span>
+<span></span>
+<span></span>
+</button>
+
+<button type="button" onclick="showAllProducts()">
+BRAND
+</button>
+
+<button type="button" onclick="selectCategory('아우터')">
+OUTER
+</button>
+
+<button type="button" onclick="selectCategory('상의')">
+TOP
+</button>
+
+<button type="button" onclick="selectCategory('하의')">
+BOTTOM
+</button>
+
+<button type="button" onclick="selectCategory('신발')">
+SHOES
+</button>
+
+<button type="button" onclick="selectCategory('가방')">
+BAG
+</button>
+
+<button type="button" onclick="selectCategory('지갑')">
+WALLET
+</button>
+
+<button type="button" onclick="selectCategory('시계')">
+WATCH
+</button>
+
+<button type="button" onclick="selectCategory('주얼리')">
+JEWELRY
+</button>
+
+<button type="button" onclick="selectCategory('액세서리')">
+ACC
+</button>
+
+<button type="button" onclick="openConsign()">
+CONSIGN
+</button>
+
+</nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<main id="homePage" class="page active">
+
+<section class="hero">
+
+<div class="hero-inner">
+
+<div class="hero-small">
+AUTHENTICATED · CURATED · RESALE
+</div>
+
+<div class="hero-logo">
+VERNO
+</div>
+
+<div class="hero-copy">
+시간이 지나도 가치가 남는 것들.<br>
+VERNO가 선별한 럭셔리 셀렉션.
+</div>
+
+<button
+  class="hero-shop"
+  type="button"
+  onclick="showAllProducts()"
+>
+DISCOVER COLLECTION
+</button>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-title">
+
+<div>
+<h2>NEW ARRIVALS</h2>
+<p>새롭게 입고된 VERNO 셀렉션</p>
+</div>
+
+<button
+  class="link-button"
+  type="button"
+  onclick="showAllProducts()"
+>
+VIEW ALL
+</button>
+
+</div>
+
+<div id="homeProducts" class="product-grid"></div>
+
+</section>
+
+</main>
+
+
+<!-- SHOP -->
+
+<main id="shopPage" class="page">
+
+<div class="shop-head">
+
+<h1 id="shopTitle">
+SHOP
+</h1>
+
+<p id="shopResult">
+40개의 상품
+</p>
+
+</div>
+
+<div id="filters" class="filters"></div>
+
+<section class="section" style="padding-top:0">
+
+<div id="shopProducts" class="product-grid"></div>
+
+</section>
+
+</main>
+
+
+<!-- CART -->
+
+<main id="cartPage" class="page">
+
+<section class="cart-page">
+
+<h1>SHOPPING BAG</h1>
+
+<div class="cart-layout">
+
+<div id="cartItems"></div>
+
+<div class="summary">
+
+<h3>ORDER SUMMARY</h3>
+
+<div class="summary-row">
+<span>상품금액</span>
+<span id="cartSubtotal">₩0</span>
+</div>
+
+<div class="summary-row">
+<span>배송비</span>
+<span id="cartShipping">₩0</span>
+</div>
+
+<div class="summary-total">
+<span>TOTAL</span>
+<span id="cartTotal">₩0</span>
+</div>
+
+<button
+  class="black-button"
+  type="button"
+  onclick="checkoutFromCart()"
+>
+주문하기
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- CHECKOUT -->
+
+<main id="checkoutPage" class="page">
+
+<section class="checkout-page">
+
+<h1>CHECKOUT</h1>
+
+<div class="checkout-grid">
+
+<div>
+
+<div class="checkout-block">
+
+<h3>배송 정보</h3>
+
+<input
+  id="receiverInput"
+  class="checkout-input"
+  type="text"
+  placeholder="받는 분"
+>
+
+<input
+  id="phoneInput"
+  class="checkout-input"
+  type="tel"
+  placeholder="휴대전화 번호"
+>
+
+<input
+  id="addressInput"
+  class="checkout-input"
+  type="text"
+  placeholder="주소"
+>
+
+<input
+  id="detailAddressInput"
+  class="checkout-input"
+  type="text"
+  placeholder="상세주소"
+>
+
+</div>
+
+
+<div class="checkout-block">
+
+<h3>결제 방법</h3>
+
+<div class="pay-options">
+
+<button
+  class="pay-option active"
+  type="button"
+  onclick="selectPayment(this)"
+>
+신용카드
+</button>
+
+<button
+  class="pay-option"
+  type="button"
+  onclick="selectPayment(this)"
+>
+계좌이체
+</button>
+
+<button
+  class="pay-option"
+  type="button"
+  onclick="selectPayment(this)"
+>
+간편결제
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="summary">
+
+<h3>YOUR ORDER</h3>
+
+<div id="checkoutItems"></div>
+
+<div class="summary-total">
+<span>TOTAL</span>
+<span id="checkoutTotal">₩0</span>
+</div>
+
+<button
+  class="black-button"
+  type="button"
+  onclick="completeDemoPayment()"
+>
+결제하기
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- CONSIGN -->
+
+<main id="consignPage" class="page">
+
+<section class="consign-page">
+
+<div class="consign-label">
+VERNO CONSIGN
+</div>
+
+<h1>위탁판매</h1>
+
+
+<div class="consign-box">
+
+<div class="consign-info">
+
+<h2>
+소장하고 있는 상품을<br>
+VERNO에서 판매해보세요.
+</h2>
+
+<p>
+판매를 원하는 상품의 브랜드, 상품명, 사이즈,
+상품 상태와 실제 상품 사진을 준비해주세요.
+카카오톡 상담 후 검수와 판매 진행 방법을 안내해드립니다.
+</p>
+
+
+<div class="steps">
+
+<div class="step">
+<small>STEP 01</small>
+<div>상품 정보 준비</div>
+</div>
+
+<div class="step">
+<small>STEP 02</small>
+<div>카카오톡 상담</div>
+</div>
+
+<div class="step">
+<small>STEP 03</small>
+<div>검수 및 판매 진행</div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="consign-contact">
+
+<small>KAKAO TALK</small>
+
+<h3>위탁판매 신청 · 문의</h3>
+
+<div class="kakao-id">
+VERNO_OFFICIAL
+</div>
+
+<button
+  class="black-button"
+  type="button"
+  onclick="copyKakao()"
+>
+카카오톡 ID 복사
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-inner">
+
+<div class="footer-logo">
+VERNO
+</div>
+
+<p>
+CURATED LUXURY RESALE PLATFORM<br>
+© 2026 VERNO
+</p>
+
+</div>
+
+</footer>
+
+
+<!-- ======================================================
+     DRAWER
+====================================================== -->
+
+<div id="drawerOverlay" class="drawer-overlay">
+
+<aside id="drawer" class="drawer">
+
+<div class="drawer-header">
+
+<div>
+
+<div class="drawer-title">
+VERNO에 오신 걸<br>
+환영합니다.
+</div>
+
+</div>
+
+<button
+  class="close-button"
+  type="button"
+  onclick="closeDrawer()"
+>
+×
+</button>
+
+</div>
+
+
+<div id="drawerGuest" class="drawer-auth">
+
+<button
+  class="primary"
+  type="button"
+  onclick="drawerAuth('login')"
+>
+로그인
+</button>
+
+<button
+  type="button"
+  onclick="drawerAuth('signup')"
+>
+회원가입
+</button>
+
+</div>
+
+
+<div id="drawerMember" class="drawer-auth hidden">
+
+<button
+  class="primary"
+  type="button"
+  onclick="logout()"
+>
+로그아웃
+</button>
+
+<button
+  type="button"
+  onclick="drawerCart()"
+>
+장바구니
+</button>
+
+</div>
+
+
+<div class="quick">
+
+<button type="button" onclick="showToast('최근 본 상품 기능을 준비 중입니다.')">
+최근본상품
+</button>
+
+<button type="button" onclick="memberFeature('관심상품')">
+관심상품
+</button>
+
+<button type="button" onclick="memberFeature('주문조회')">
+주문조회
+</button>
+
+<button type="button" onclick="memberFeature('마이페이지')">
+마이페이지
+</button>
+
+</div>
+
+
+<div class="drawer-section">
+
+<div class="drawer-section-title">
+CATEGORY
+</div>
+
+
+<button
+  class="drawer-row"
+  type="button"
+  onclick="toggleBrands()"
+>
+<span>BRAND</span>
+<span id="brandToggle">＋</span>
+</button>
+
+<div id="brandSub" class="brand-sub"></div>
+
+
+<button class="drawer-row" type="button" onclick="drawerCategory('아우터')">
+<span>OUTER</span><span>›</span>
+</button>
+
+<button class="drawer-row" type="button" onclick="drawerCategory('상의')">
+<span>TOP</span><span>›</span>
+</button>
+
+<button class="drawer-row" type="button" onclick="drawerCategory('하의')">
+<span>BOTTOM</span><span>›</span>
+</button>
+
+<button class="drawer-row" type="button" onclick="drawerCategory('신발')">
+<span>SHOES</span><span>›</span>
+</button>
+
+<button class="drawer-row" type="button" onclick="drawerCategory('가방')">
+<span>BAG</span><span>›</span>
+</button>
+
+<button class="drawer-row" type="button" onclick="drawerCategory('지갑')">
+<span>WALLET</span><span>›</span>
+</button>
+
+<button class="drawer-row" type="button" onclick="drawerCategory('시계')">
+<span>WATCH</span><span>›</span>
+</button>
+
+<button class="drawer-row" type="button" onclick="drawerCategory('주얼리')">
+<span>JEWELRY</span><span>›</span>
+</button>
+
+<button class="drawer-row" type="button" onclick="drawerCategory('액세서리')">
+<span>ACC</span><span>›</span>
+</button>
+
+</div>
+
+
+<div class="drawer-bottom">
+
+<button type="button" onclick="drawerConsign()">
+<span>위탁판매</span>
+<span>›</span>
+</button>
+
+<button type="button" onclick="showToast('회사소개 페이지를 준비 중입니다.')">
+<span>회사소개</span>
+<span>›</span>
+</button>
+
+<button type="button" onclick="showToast('고객센터를 준비 중입니다.')">
+<span>고객센터</span>
+<span>›</span>
+</button>
+
+</div>
+
+</aside>
+
+</div>
+
+
+<!-- ======================================================
+     PRODUCT DETAIL
+====================================================== -->
+
+<div id="productDetail" class="detail">
+
+<div class="detail-header">
+
+<button type="button" onclick="closeProduct()">
+← BACK
+</button>
+
+<strong>VERNO</strong>
+
+<div></div>
+
+</div>
+
+
+<div class="detail-layout">
+
+<div>
+
+<img
+  id="detailMainImage"
+  class="detail-main-image"
+  src=""
+  alt=""
+>
+
+<div id="thumbList" class="thumb-list"></div>
+
+</div>
+
+
+<div>
+
+<div id="detailBrand" class="detail-brand"></div>
+
+<h1 id="detailName" class="detail-name"></h1>
+
+<div id="detailPrice" class="detail-price"></div>
+
+<div class="auth-label">
+VERNO AUTHENTICATED
+</div>
+
+
+<div class="detail-table">
+
+<div class="detail-row">
+<span>상품상태</span>
+<span id="detailCondition"></span>
+</div>
+
+<div class="detail-row">
+<span>배송방법</span>
+<span>택배</span>
+</div>
+
+<div class="detail-row">
+<span>배송비</span>
+<span>₩5,000 · 100만원 이상 무료</span>
+</div>
+
+</div>
+
+
+<button
+  class="size-guide-button"
+  type="button"
+  onclick="openSizeGuide()"
+>
+SIZE GUIDE ›
+</button>
+
+
+<div class="option-title">
+OPTION
+</div>
+
+<div id="sizeOptions" class="size-options"></div>
+
+
+<div class="quantity-line">
+
+<span>수량</span>
+
+<div class="qty">
+
+<button type="button" onclick="changeDetailQty(-1)">
+−
+</button>
+
+<span id="detailQty">
+1
+</span>
+
+<button type="button" onclick="changeDetailQty(1)">
+＋
+</button>
+
+</div>
+
+</div>
+
+
+<div class="detail-total">
+
+<span>TOTAL</span>
+
+<strong id="detailTotal">
+₩0
+</strong>
+
+</div>
+
+
+<div class="detail-actions">
+
+<button
+  class="wish-button"
+  type="button"
+  onclick="wishProduct()"
+>
+♡
+</button>
+
+<button
+  class="cart-button"
+  type="button"
+  onclick="addCart()"
+>
+장바구니
+</button>
+
+<button
+  class="buy-button"
+  type="button"
+  onclick="buyNow()"
+>
+바로구매
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ======================================================
+     AUTH MODAL
+====================================================== -->
+
+<div id="authOverlay" class="modal-overlay">
+
+<div class="auth-modal">
+
+<button
+  class="auth-x"
+  type="button"
+  onclick="closeAuth()"
+>
+×
+</button>
+
+
+<div class="auth-symbol"></div>
+
+<div class="auth-brand">
+VERNO
+</div>
+
+<div class="auth-subtitle">
+MEMBERSHIP
+</div>
+
+
+<div class="auth-tabs">
+
+<button
+  id="loginTab"
+  class="auth-tab active"
+  type="button"
+  onclick="setAuthMode('login')"
+>
+로그인
+</button>
+
+<button
+  id="signupTab"
+  class="auth-tab"
+  type="button"
+  onclick="setAuthMode('signup')"
+>
+회원가입
+</button>
+
+</div>
+
+
+<div id="loginPanel" class="auth-panel active">
+
+<input
+  id="loginId"
+  class="auth-input"
+  type="text"
+  placeholder="아이디"
+  autocomplete="username"
+>
+
+<input
+  id="loginPw"
+  class="auth-input"
+  type="password"
+  placeholder="비밀번호"
+  autocomplete="current-password"
+>
+
+<button
+  class="auth-submit"
+  type="button"
+  onclick="login()"
+>
+로그인
+</button>
+
+</div>
+
+
+<div id="signupPanel" class="auth-panel">
+
+<input
+  id="joinId"
+  class="auth-input"
+  type="text"
+  placeholder="아이디"
+  autocomplete="username"
+>
+
+<input
+  id="joinPw"
+  class="auth-input"
+  type="password"
+  placeholder="비밀번호"
+  autocomplete="new-password"
+>
+
+<input
+  id="joinPw2"
+  class="auth-input"
+  type="password"
+  placeholder="비밀번호 확인"
+  autocomplete="new-password"
+>
+
+<input
+  id="joinPhone"
+  class="auth-input"
+  type="tel"
+  placeholder="휴대전화 번호"
+  autocomplete="tel"
+>
+
+<input
+  id="joinCode"
+  class="auth-input"
+  type="text"
+  inputmode="numeric"
+  placeholder="인증번호"
+>
+
+<button
+  class="auth-submit"
+  type="button"
+  onclick="signup()"
+>
+회원가입
+</button>
+
+<div class="auth-note">
+프로토타입 인증번호 : 000000
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ======================================================
+     SIZE GUIDE
+====================================================== -->
+
+<div id="sizeOverlay" class="modal-overlay">
+
+<div class="size-modal">
+
+<div class="size-head">
+
+<h2>SIZE GUIDE</h2>
+
+<button type="button" onclick="closeSizeGuide()">
+×
+</button>
+
+</div>
+
+
+<div class="table-title">
+CLOTHING
+</div>
+
+<table class="size-table">
+
+<tr>
+<th>SIZE</th>
+<th>XS</th>
+<th>S</th>
+<th>M</th>
+<th>L</th>
+<th>XL</th>
+<th>XXL</th>
+</tr>
+
+<tr>
+<td>KR</td>
+<td>90</td>
+<td>95</td>
+<td>100</td>
+<td>105</td>
+<td>110</td>
+<td>115</td>
+</tr>
+
+<tr>
+<td>US</td>
+<td>34</td>
+<td>36</td>
+<td>38</td>
+<td>40</td>
+<td>42</td>
+<td>44</td>
+</tr>
+
+<tr>
+<td>EU</td>
+<td>44</td>
+<td>46</td>
+<td>48</td>
+<td>50</td>
+<td>52</td>
+<td>54</td>
+</tr>
+
+</table>
+
+
+<div class="table-title">
+PANTS
+</div>
+
+<table class="size-table">
+
+<tr>
+<th>INCH</th>
+<th>26</th>
+<th>28</th>
+<th>30</th>
+<th>32</th>
+<th>34</th>
+<th>36</th>
+</tr>
+
+<tr>
+<td>CM</td>
+<td>66</td>
+<td>71</td>
+<td>76</td>
+<td>81</td>
+<td>86</td>
+<td>91</td>
+</tr>
+
+</table>
+
+
+<div class="table-title">
+SHOES
+</div>
+
+<table class="size-table">
+
+<tr>
+<th>KR</th>
+<th>240</th>
+<th>250</th>
+<th>260</th>
+<th>270</th>
+<th>280</th>
+<th>290</th>
+</tr>
+
+<tr>
+<td>US</td>
+<td>6.5</td>
+<td>7.5</td>
+<td>8.5</td>
+<td>9.5</td>
+<td>10.5</td>
+<td>11.5</td>
+</tr>
+
+<tr>
+<td>EU</td>
+<td>38</td>
+<td>40</td>
+<td>41</td>
+<td>43</td>
+<td>44</td>
+<td>46</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+/* =========================================================
+   PRODUCT DATA
+   가격/상품명/사진은 프로토타입용 데모 데이터입니다.
+========================================================= */
+
+const productData = [
+["DIOR","Saddle Lotus Wallet","지갑",1490000],
+["CHANEL","Classic Flap Bag","가방",8900000],
+["LOUIS VUITTON","Alma BB","가방",2300000],
+["HERMÈS","Birkin 30","가방",22000000],
+["ROLEX","Submariner Date","시계",14500000],
+["CARTIER","Tank Must","시계",7500000],
+["PRADA","Re-Nylon Shoulder Bag","가방",1350000],
+["GUCCI","GG Marmont Bag","가방",1790000],
+["SAINT LAURENT","Leather Shoulder Bag","가방",2190000],
+["BOTTEGA VENETA","Intrecciato Bag","가방",3490000],
+["CELINE","Triomphe Bag","가방",3950000],
+["FENDI","Baguette Bag","가방",2990000],
+["BALENCIAGA","Le Cagole Bag","가방",2150000],
+["MIU MIU","Wander Matelassé Bag","가방",2780000],
+["LOEWE","Puzzle Bag","가방",3250000],
+["DIOR","Oblique Card Holder","지갑",590000],
+["CHANEL","Classic Card Holder","지갑",890000],
+["PRADA","Saffiano Wallet","지갑",730000],
+["GUCCI","GG Card Case","지갑",490000],
+["BOTTEGA VENETA","Cassette Wallet","지갑",690000],
+["OMEGA","Speedmaster","시계",8300000],
+["TAG HEUER","Formula 1 Blue Dial","시계",2100000],
+["TUDOR","Black Bay","시계",4900000],
+["BREITLING","Superocean","시계",5500000],
+["IWC","Pilot Watch","시계",6800000],
+["CARTIER","Love Bracelet","주얼리",7600000],
+["TIFFANY & CO.","T Bracelet","주얼리",2350000],
+["VAN CLEEF & ARPELS","Alhambra Necklace","주얼리",4500000],
+["BVLGARI","B.zero1 Ring","주얼리",1980000],
+["CHANEL","Coco Crush Ring","주얼리",2900000],
+["MONCLER","Maya Down Jacket","아우터",2490000],
+["BURBERRY","Heritage Trench Coat","아우터",2700000],
+["STONE ISLAND","Soft Shell Jacket","아우터",890000],
+["AMI","Logo Knit","상의",490000],
+["MAISON KITSUNÉ","Fox Sweatshirt","상의",320000],
+["ACNE STUDIOS","Wide Denim","하의",490000],
+["BALENCIAGA","Runner Sneaker","신발",1390000],
+["DIOR","B27 Sneaker","신발",1490000],
+["LOUIS VUITTON","Trainer Sneaker","신발",1690000],
+["PRADA","Triangle Sunglasses","액세서리",520000]
+];
+
+const imagePool = [
+"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=80",
+"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1000&q=80",
+"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=1000&q=80",
+"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1000&q=80",
+"https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1000&q=80",
+"https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=1000&q=80",
+"https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1000&q=80",
+"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=80"
+];
+
+const products = productData.map((p,index)=>{
+
+  let sizes;
+
+  if(p[2] === "신발"){
+    sizes=[
+      {name:"250",stock:1},
+      {name:"260",stock:2},
+      {name:"270",stock:1},
+      {name:"280",stock:0}
+    ];
+  }
+
+  else if(p[2] === "상의" || p[2] === "아우터"){
+    sizes=[
+      {name:"S",stock:1},
+      {name:"M",stock:2},
+      {name:"L",stock:1},
+      {name:"XL",stock:0}
+    ];
+  }
+
+  else if(p[2] === "하의"){
+    sizes=[
+      {name:"28",stock:1},
+      {name:"30",stock:2},
+      {name:"32",stock:1},
+      {name:"34",stock:0}
+    ];
+  }
+
+  else{
+    sizes=[
+      {name:"ONE SIZE",stock:1}
+    ];
+  }
+
+  return{
+    id:index+1,
+    brand:p[0],
+    name:p[1],
+    category:p[2],
+    price:p[3],
+    condition:["S","A+","A"][index%3],
+    sizes:sizes,
+
+    images:[
+      imagePool[index%imagePool.length],
+      imagePool[(index+1)%imagePool.length],
+      imagePool[(index+2)%imagePool.length]
+    ]
+  };
+});
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let category="전체";
+let brand=null;
+
+let currentProduct=null;
+let selectedSize=null;
+let detailQuantity=1;
+
+let checkoutMode="cart";
+let buyNowItem=null;
+
+let toastTimer=null;
+let authTimer=null;
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function won(value){
+  return "₩"+Number(value).toLocaleString("ko-KR");
+}
+
+function loggedIn(){
+  return localStorage.getItem("vernoLogin")==="true";
+}
+
+function getCart(){
+  try{
+    return JSON.parse(localStorage.getItem("vernoCart")||"[]");
+  }catch{
+    return [];
+  }
+}
+
+function saveCart(cart){
+  localStorage.setItem("vernoCart",JSON.stringify(cart));
+  updateCartCount();
+}
+
+
+/* =========================================================
+   PAGES
+========================================================= */
+
+function showPage(name){
+
+  document.querySelectorAll(".page").forEach(el=>{
+    el.classList.remove("active");
+  });
+
+  document.getElementById(name+"Page").classList.add("active");
+
+  window.scrollTo(0,0);
+}
+
+function goHome(){
+  showPage("home");
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+function productCard(product){
+
+  const card=document.createElement("article");
+
+  card.className="product-card";
+
+  card.addEventListener("click",()=>{
+    openProduct(product.id);
+  });
+
+  card.innerHTML=`
+    <div class="product-image">
+      <img src="${product.images[0]}" alt="${product.name}" loading="lazy">
+      <div class="grade">${product.condition}</div>
+    </div>
+
+    <div class="product-text">
+      <div class="product-brand">${product.brand}</div>
+      <div class="product-name">${product.name}</div>
+      <div class="product-price">${won(product.price)}</div>
+      <div class="auth-label">VERNO AUTHENTICATED</div>
+    </div>
+  `;
+
+  return card;
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function renderHome(){
+
+  const box=document.getElementById("homeProducts");
+
+  box.innerHTML="";
+
+  products.slice(0,8).forEach(product=>{
+    box.appendChild(productCard(product));
+  });
+}
+
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+const categories=[
+  "전체","가방","지갑","시계","주얼리",
+  "아우터","상의","하의","신발","액세서리"
+];
+
+function renderFilters(){
+
+  const box=document.getElementById("filters");
+
+  box.innerHTML="";
+
+  categories.forEach(item=>{
+
+    const button=document.createElement("button");
+
+    button.type="button";
+
+    button.className=
+      "filter"+(item===category?" active":"");
+
+    button.textContent=item;
+
+    button.addEventListener("click",()=>{
+
+      category=item;
+      brand=null;
+
+      renderFilters();
+      renderShop();
+    });
+
+    box.appendChild(button);
+  });
+}
+
+function filteredProducts(){
+
+  const input=document.getElementById("searchInput");
+
+  const keyword=input
+    ? input.value.trim().toLowerCase()
+    : "";
+
+  return products.filter(product=>{
+
+    const categoryOK=
+      category==="전체" ||
+      product.category===category;
+
+    const brandOK=
+      !brand ||
+      product.brand===brand;
+
+    const searchText=
+      (
+        product.brand+" "+
+        product.name+" "+
+        product.category
+      ).toLowerCase();
+
+    const keywordOK=
+      !keyword ||
+      searchText.includes(keyword);
+
+    return categoryOK && brandOK && keywordOK;
+  });
+}
+
+function renderShop(){
+
+  const box=document.getElementById("shopProducts");
+
+  const list=filteredProducts();
+
+  box.innerHTML="";
+
+  list.forEach(product=>{
+    box.appendChild(productCard(product));
+  });
+
+  if(list.length===0){
+    box.innerHTML=`
+      <div style="
+        grid-column:1/-1;
+        padding:80px 0;
+        text-align:center;
+        color:#999;
+        font-size:11px;
+      ">
+        검색 결과가 없습니다.
+      </div>
+    `;
+  }
+
+  let title="SHOP";
+
+  if(brand){
+    title=brand;
+  }
+
+  else if(category!=="전체"){
+    title=category;
+  }
+
+  document.getElementById("shopTitle").textContent=title;
+
+  document.getElementById("shopResult").textContent=
+    list.length+"개의 상품";
+}
+
+function showAllProducts(){
+
+  category="전체";
+  brand=null;
+
+  const search=document.getElementById("searchInput");
+
+  if(search){
+    search.value="";
+  }
+
+  renderFilters();
+  renderShop();
+
+  showPage("shop");
+}
+
+function selectCategory(name){
+
+  category=name;
+  brand=null;
+
+  const search=document.getElementById("searchInput");
+
+  if(search){
+    search.value="";
+  }
+
+  renderFilters();
+  renderShop();
+
+  showPage("shop");
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function runSearch(){
+
+  category="전체";
+  brand=null;
+
+  renderFilters();
+  renderShop();
+
+  const keyword=
+    document.getElementById("searchInput").value.trim();
+
+  document.getElementById("shopTitle").textContent=
+    keyword
+      ? `"${keyword}" SEARCH`
+      : "SHOP";
+
+  showPage("shop");
+}
+
+/*
+  입력하는 순간에도 검색 결과 갱신.
+  input 이벤트를 JS에서 직접 연결해 HTML 이벤트 충돌을 줄임.
+*/
+
+document.getElementById("searchInput")
+.addEventListener("input",function(){
+
+  category="전체";
+  brand=null;
+
+  renderFilters();
+  renderShop();
+
+  const keyword=this.value.trim();
+
+  document.getElementById("shopTitle").textContent=
+    keyword
+      ? `"${keyword}" SEARCH`
+      : "SHOP";
+
+  showPage("shop");
+});
+
+document.getElementById("searchInput")
+.addEventListener("keydown",function(event){
+
+  if(event.key==="Enter"){
+    event.preventDefault();
+    runSearch();
+  }
+});
+
+
+/* =========================================================
+   PRODUCT DETAIL
+========================================================= */
+
+function openProduct(id){
+
+  currentProduct=products.find(p=>p.id===id);
+
+  if(!currentProduct){
+    return;
+  }
+
+  selectedSize=null;
+  detailQuantity=1;
+
+  document.getElementById("detailBrand").textContent=
+    currentProduct.brand;
+
+  document.getElementById("detailName").textContent=
+    currentProduct.name;
+
+  document.getElementById("detailPrice").textContent=
+    won(currentProduct.price);
+
+  document.getElementById("detailCondition").textContent=
+    currentProduct.condition;
+
+  document.getElementById("detailMainImage").src=
+    currentProduct.images[0];
+
+  document.getElementById("detailMainImage").alt=
+    currentProduct.name;
+
+  renderThumbnails();
+  renderSizes();
+
+  document.getElementById("detailQty").textContent="1";
+
+  updateDetailTotal();
+
+  document.getElementById("productDetail")
+    .classList.add("open");
+
+  document.body.style.overflow="hidden";
+}
+
+function closeProduct(){
+
+  document.getElementById("productDetail")
+    .classList.remove("open");
+
+  document.body.style.overflow="";
+}
+
+function renderThumbnails(){
+
+  const box=document.getElementById("thumbList");
+
+  box.innerHTML="";
+
+  currentProduct.images.forEach((src,index)=>{
+
+    const image=document.createElement("img");
+
+    image.src=src;
+
+    image.className=
+      "thumb"+(index===0?" selected":"");
+
+    image.addEventListener("click",()=>{
+
+      document.getElementById("detailMainImage").src=src;
+
+      document.querySelectorAll(".thumb").forEach(el=>{
+        el.classList.remove("selected");
+      });
+
+      image.classList.add("selected");
+    });
+
+    box.appendChild(image);
+  });
+}
+
+function renderSizes(){
+
+  const box=document.getElementById("sizeOptions");
+
+  box.innerHTML="";
+
+  currentProduct.sizes.forEach(size=>{
+
+    const button=document.createElement("button");
+
+    button.type="button";
+    button.className="size-option";
+
+    if(size.stock===0){
+
+      button.disabled=true;
+
+      button.innerHTML=
+        `${size.name}<span class="stock">품절</span>`;
+    }
+
+    else{
+
+      button.innerHTML=
+        `${size.name}<span class="stock">${size.stock}개 남음</span>`;
+    }
+
+    button.addEventListener("click",()=>{
+
+      selectedSize=size.name;
+
+      document.querySelectorAll(".size-option").forEach(el=>{
+        el.classList.remove("selected");
+      });
+
+      button.classList.add("selected");
+    });
+
+    box.appendChild(button);
+  });
+}
+
+function changeDetailQty(change){
+
+  detailQuantity+=change;
+
+  if(detailQuantity<1){
+    detailQuantity=1;
+  }
+
+  if(detailQuantity>10){
+    detailQuantity=10;
+  }
+
+  document.getElementById("detailQty").textContent=
+    detailQuantity;
+
+  updateDetailTotal();
+}
+
+function updateDetailTotal(){
+
+  if(!currentProduct){
+    return;
+  }
+
+  document.getElementById("detailTotal").textContent=
+    won(currentProduct.price*detailQuantity);
+}
+
+
+/* =========================================================
+   LOGIN REQUIRED
+========================================================= */
+
+function requireLogin(){
+
+  showToast("로그인이 필요합니다.");
+
+  clearTimeout(authTimer);
+
+  authTimer=setTimeout(()=>{
+    openAuth("login");
+  },700);
+}
+
+
+/* =========================================================
+   WISH
+========================================================= */
+
+function wishProduct(){
+
+  if(!loggedIn()){
+    requireLogin();
+    return;
+  }
+
+  showToast("관심상품에 추가되었습니다.");
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function addCart(){
+
+  if(!selectedSize){
+    showToast("옵션을 선택해주세요.");
+    return;
+  }
+
+  if(!loggedIn()){
+    requireLogin();
+    return;
+  }
+
+  const cart=getCart();
+
+  const same=cart.find(item=>
+    item.id===currentProduct.id &&
+    item.size===selectedSize
+  );
+
+  if(same){
+    same.quantity+=detailQuantity;
+  }
+
+  else{
+    cart.push({
+      id:currentProduct.id,
+      size:selectedSize,
+      quantity:detailQuantity
+    });
+  }
+
+  saveCart(cart);
+
+  showToast("장바구니에 담았습니다.");
+}
+
+function updateCartCount(){
+
+  const count=getCart().reduce(
+    (sum,item)=>sum+item.quantity,
+    0
+  );
+
+  document.getElementById("cartCount").textContent=count;
+}
+
+function openCart(){
+
+  if(!loggedIn()){
+    requireLogin();
+    return;
+  }
+
+  closeProduct();
+
+  renderCart();
+
+  showPage("cart");
+}
+
+function renderCart(){
+
+  const cart=getCart();
+
+  const box=document.getElementById("cartItems");
+
+  box.innerHTML="";
+
+  if(cart.length===0){
+
+    box.innerHTML=`
+      <div class="empty">
+        장바구니가 비어 있습니다.
+      </div>
+    `;
+  }
+
+  cart.forEach((item,index)=>{
+
+    const product=products.find(p=>p.id===item.id);
+
+    if(!product){
+      return;
+    }
+
+    const row=document.createElement("div");
+
+    row.className="cart-item";
+
+    row.innerHTML=`
+      <img src="${product.images[0]}" alt="${product.name}">
+
+      <div>
+        <div class="cart-item-brand">${product.brand}</div>
+
+        <div class="cart-item-name">
+          ${product.name}
+        </div>
+
+        <div class="cart-option">
+          OPTION · ${item.size}
+        </div>
+
+        <div class="cart-qty">
+          <button type="button" onclick="cartQty(${index},-1)">−</button>
+          <span>${item.quantity}</span>
+          <button type="button" onclick="cartQty(${index},1)">＋</button>
+        </div>
+
+        <div class="cart-price">
+          ${won(product.price*item.quantity)}
+        </div>
+      </div>
+
+      <button
+        class="remove"
+        type="button"
+        onclick="removeCart(${index})"
+      >
+        REMOVE
+      </button>
+    `;
+
+    box.appendChild(row);
+  });
+
+  updateCartSummary();
+}
+
+function cartQty(index,change){
+
+  const cart=getCart();
+
+  if(!cart[index]){
+    return;
+  }
+
+  cart[index].quantity+=change;
+
+  if(cart[index].quantity<1){
+    cart[index].quantity=1;
+  }
+
+  if(cart[index].quantity>10){
+    cart[index].quantity=10;
+  }
+
+  saveCart(cart);
+  renderCart();
+}
+
+function removeCart(index){
+
+  const cart=getCart();
+
+  cart.splice(index,1);
+
+  saveCart(cart);
+  renderCart();
+}
+
+function cartSubtotal(){
+
+  return getCart().reduce((sum,item)=>{
+
+    const product=products.find(p=>p.id===item.id);
+
+    return product
+      ? sum+(product.price*item.quantity)
+      : sum;
+
+  },0);
+}
+
+function shippingFor(value){
+
+  if(value===0){
+    return 0;
+  }
+
+  return value>=1000000 ? 0 : 5000;
+}
+
+function updateCartSummary(){
+
+  const subtotal=cartSubtotal();
+  const shipping=shippingFor(subtotal);
+  const total=subtotal+shipping;
+
+  document.getElementById("cartSubtotal").textContent=
+    won(subtotal);
+
+  document.getElementById("cartShipping").textContent=
+    shipping===0 && subtotal>0
+      ? "무료"
+      : won(shipping);
+
+  document.getElementById("cartTotal").textContent=
+    won(total);
+}
+
+
+/* =========================================================
+   BUY NOW
+   장바구니를 덮어쓰지 않음
+========================================================= */
+
+function buyNow(){
+
+  if(!selectedSize){
+    showToast("옵션을 선택해주세요.");
+    return;
+  }
+
+  if(!loggedIn()){
+    requireLogin();
+    return;
+  }
+
+  buyNowItem={
+    id:currentProduct.id,
+    size:selectedSize,
+    quantity:detailQuantity
+  };
+
+  checkoutMode="buyNow";
+
+  closeProduct();
+
+  renderCheckout();
+
+  showPage("checkout");
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function checkoutFromCart(){
+
+  if(getCart().length===0){
+    showToast("장바구니가 비어 있습니다.");
+    return;
+  }
+
+  checkoutMode="cart";
+  buyNowItem=null;
+
+  renderCheckout();
+
+  showPage("checkout");
+}
+
+function checkoutItems(){
+
+  if(checkoutMode==="buyNow" && buyNowItem){
+    return [buyNowItem];
+  }
+
+  return getCart();
+}
+
+function checkoutSubtotal(){
+
+  return checkoutItems().reduce((sum,item)=>{
+
+    const product=products.find(p=>p.id===item.id);
+
+    return product
+      ? sum+product.price*item.quantity
+      : sum;
+
+  },0);
+}
+
+function renderCheckout(){
+
+  const items=checkoutItems();
+
+  const box=document.getElementById("checkoutItems");
+
+  box.innerHTML="";
+
+  items.forEach(item=>{
+
+    const product=products.find(p=>p.id===item.id);
+
+    if(!product){
+      return;
+    }
+
+    const row=document.createElement("div");
+
+    row.className="checkout-item";
+
+    row.innerHTML=`
+      <img src="${product.images[0]}" alt="${product.name}">
+
+      <div>
+        <strong>${product.brand}</strong>
+        <div>${product.name}</div>
+        <div>${item.size} · ${item.quantity}개</div>
+        <div>${won(product.price*item.quantity)}</div>
+      </div>
+    `;
+
+    box.appendChild(row);
+  });
+
+  const subtotal=checkoutSubtotal();
+
+  const total=subtotal+shippingFor(subtotal);
+
+  document.getElementById("checkoutTotal").textContent=
+    won(total);
+}
+
+function selectPayment(button){
+
+  document.querySelectorAll(".pay-option").forEach(el=>{
+    el.classList.remove("active");
+  });
+
+  button.classList.add("active");
+}
+
+function completeDemoPayment(){
+
+  const receiver=
+    document.getElementById("receiverInput").value.trim();
+
+  const phone=
+    document.getElementById("phoneInput").value.trim();
+
+  const address=
+    document.getElementById("addressInput").value.trim();
+
+  if(!receiver || !phone || !address){
+
+    showToast("배송 정보를 입력해주세요.");
+    return;
+  }
+
+  showToast("현재는 데모 결제 화면입니다.");
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+function openAuth(mode){
+
+  closeDrawer();
+
+  setAuthMode(mode);
+
+  document.getElementById("authOverlay")
+    .classList.add("open");
+
+  /*
+    iPad/Safari에서 모달이 열린 뒤 입력창이
+    정상적으로 터치 가능하도록 단순 display:flex 구조 사용.
+  */
+}
+
+function closeAuth(){
+
+  clearTimeout(authTimer);
+
+  document.getElementById("authOverlay")
+    .classList.remove("open");
+}
+
+function setAuthMode(mode){
+
+  const loginMode=mode==="login";
+
+  document.getElementById("loginTab")
+    .classList.toggle("active",loginMode);
+
+  document.getElementById("signupTab")
+    .classList.toggle("active",!loginMode);
+
+  document.getElementById("loginPanel")
+    .classList.toggle("active",loginMode);
+
+  document.getElementById("signupPanel")
+    .classList.toggle("active",!loginMode);
+}
+
+function signup(){
+
+  const id=document.getElementById("joinId").value.trim();
+  const pw=document.getElementById("joinPw").value;
+  const pw2=document.getElementById("joinPw2").value;
+  const phone=document.getElementById("joinPhone").value.trim();
+  const code=document.getElementById("joinCode").value.trim();
+
+  if(!id || !pw || !pw2 || !phone || !code){
+
+    showToast("모든 정보를 입력해주세요.");
+    return;
+  }
+
+  if(pw!==pw2){
+
+    showToast("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+
+  if(code!=="000000"){
+
+    showToast("인증번호를 확인해주세요.");
+    return;
+  }
+
+  /*
+    프로토타입 전용.
+    실제 서비스에서는 비밀번호를 localStorage에 저장하면 안 됨.
+  */
+
+  localStorage.setItem("vernoUserId",id);
+  localStorage.setItem("vernoUserPw",pw);
+
+  document.getElementById("loginId").value=id;
+
+  setAuthMode("login");
+
+  showToast("회원가입이 완료되었습니다.");
+}
+
+function login(){
+
+  const id=document.getElementById("loginId").value.trim();
+  const pw=document.getElementById("loginPw").value;
+
+  const savedId=localStorage.getItem("vernoUserId");
+  const savedPw=localStorage.getItem("vernoUserPw");
+
+  if(!savedId){
+
+    showToast("먼저 회원가입해주세요.");
+    return;
+  }
+
+  if(id!==savedId || pw!==savedPw){
+
+    showToast("아이디 또는 비밀번호를 확인해주세요.");
+    return;
+  }
+
+  localStorage.setItem("vernoLogin","true");
+
+  closeAuth();
+
+  updateAuthUI();
+
+  showToast("로그인되었습니다.");
+}
+
+function logout(){
+
+  localStorage.removeItem("vernoLogin");
+
+  closeDrawer();
+
+  updateAuthUI();
+
+  showToast("로그아웃되었습니다.");
+}
+
+function updateAuthUI(){
+
+  const member=loggedIn();
+
+  const loginButton=document.getElementById("loginHeader");
+  const joinButton=document.getElementById("joinHeader");
+
+  if(member){
+
+    loginButton.textContent="LOGOUT";
+
+    loginButton.onclick=logout;
+
+    joinButton.classList.add("hidden");
+
+    document.getElementById("drawerGuest")
+      .classList.add("hidden");
+
+    document.getElementById("drawerMember")
+      .classList.remove("hidden");
+  }
+
+  else{
+
+    loginButton.textContent="LOGIN";
+
+    loginButton.onclick=()=>{
+      openAuth("login");
+    };
+
+    joinButton.classList.remove("hidden");
+
+    document.getElementById("drawerGuest")
+      .classList.remove("hidden");
+
+    document.getElementById("drawerMember")
+      .classList.add("hidden");
+  }
+}
+
+
+/* =========================================================
+   DRAWER
+========================================================= */
+
+function openDrawer(){
+
+  document.getElementById("drawerOverlay")
+    .classList.add("open");
+
+  document.body.style.overflow="hidden";
+}
+
+function closeDrawer(){
+
+  document.getElementById("drawerOverlay")
+    .classList.remove("open");
+
+  document.body.style.overflow="";
+}
+
+document.getElementById("drawerOverlay")
+.addEventListener("click",function(event){
+
+  if(event.target===this){
+    closeDrawer();
+  }
+});
+
+document.getElementById("drawer")
+.addEventListener("click",function(event){
+
+  /*
+    메뉴 내부 클릭이 배경 클릭으로 전달되지 않게 함.
+  */
+  event.stopPropagation();
+});
+
+function drawerAuth(mode){
+
+  closeDrawer();
+
+  setTimeout(()=>{
+    openAuth(mode);
+  },150);
+}
+
+function drawerCart(){
+
+  closeDrawer();
+
+  setTimeout(()=>{
+    openCart();
+  },100);
+}
+
+function drawerCategory(name){
+
+  closeDrawer();
+
+  setTimeout(()=>{
+    selectCategory(name);
+  },100);
+}
+
+function drawerConsign(){
+
+  closeDrawer();
+
+  setTimeout(()=>{
+    openConsign();
+  },100);
+}
+
+
+/* =========================================================
+   BRAND DRAWER
+========================================================= */
+
+function renderBrands(){
+
+  const brands=[
+    ...new Set(products.map(product=>product.brand))
+  ].sort();
+
+  const box=document.getElementById("brandSub");
+
+  box.innerHTML="";
+
+  brands.forEach(name=>{
+
+    const button=document.createElement("button");
+
+    button.type="button";
+    button.textContent=name;
+
+    button.addEventListener("click",()=>{
+
+      category="전체";
+      brand=name;
+
+      document.getElementById("searchInput").value="";
+
+      renderFilters();
+      renderShop();
+
+      closeDrawer();
+
+      showPage("shop");
+    });
+
+    box.appendChild(button);
+  });
+}
+
+function toggleBrands(){
+
+  const box=document.getElementById("brandSub");
+
+  box.classList.toggle("open");
+
+  document.getElementById("brandToggle").textContent=
+    box.classList.contains("open")
+      ? "−"
+      : "＋";
+}
+
+
+/* =========================================================
+   MEMBER FEATURES
+========================================================= */
+
+function memberFeature(name){
+
+  if(!loggedIn()){
+
+    closeDrawer();
+
+    setTimeout(()=>{
+      requireLogin();
+    },100);
+
+    return;
+  }
+
+  showToast(name+" 기능을 준비 중입니다.");
+}
+
+
+/* =========================================================
+   SIZE GUIDE
+========================================================= */
+
+function openSizeGuide(){
+
+  document.getElementById("sizeOverlay")
+    .classList.add("open");
+}
+
+function closeSizeGuide(){
+
+  document.getElementById("sizeOverlay")
+    .classList.remove("open");
+}
+
+
+/* =========================================================
+   MODAL BACKGROUND CLICK
+========================================================= */
+
+document.getElementById("authOverlay")
+.addEventListener("click",function(event){
+
+  if(event.target===this){
+    closeAuth();
+  }
+});
+
+document.getElementById("sizeOverlay")
+.addEventListener("click",function(event){
+
+  if(event.target===this){
+    closeSizeGuide();
+  }
+});
+
+
+/* =========================================================
+   CONSIGN
+========================================================= */
+
+function openConsign(){
+  showPage("consign");
+}
+
+function copyKakao(){
+
+  const value="VERNO_OFFICIAL";
+
+  if(navigator.clipboard){
+
+    navigator.clipboard.writeText(value)
+      .then(()=>{
+        showToast("카카오톡 ID가 복사되었습니다.");
+      })
+      .catch(()=>{
+        showToast("카카오톡 ID · "+value);
+      });
+  }
+
+  else{
+    showToast("카카오톡 ID · "+value);
+  }
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(message){
+
+  const toast=document.getElementById("toast");
+
+  toast.textContent=message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer=setTimeout(()=>{
+    toast.classList.remove("show");
+  },1700);
+}
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener("keydown",function(event){
+
+  if(event.key!=="Escape"){
+    return;
+  }
+
+  if(document.getElementById("authOverlay").classList.contains("open")){
+    closeAuth();
+    return;
+  }
+
+  if(document.getElementById("sizeOverlay").classList.contains("open")){
+    closeSizeGuide();
+    return;
+  }
+
+  if(document.getElementById("drawerOverlay").classList.contains("open")){
+    closeDrawer();
+    return;
+  }
+
+  if(document.getElementById("productDetail").classList.contains("open")){
+    closeProduct();
+  }
+});
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderHome();
+renderFilters();
+renderShop();
+renderBrands();
+
+updateCartCount();
+updateAuthUI();
+
+</script>
+
+</body>
+</html>
