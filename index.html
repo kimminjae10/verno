@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VERNO</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -12,10 +13,149 @@ padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
-
 body{
-background:#000;
+background:#0b0b0b;
 color:white;
+font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+}
+.section-title{
+text-align:center;
+font-size:42px;
+color:#ffd700;
+margin-bottom:50px;
+font-weight:700;
+}
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+padding:40px;
+max-width:1400px;
+margin:auto;
+}
+
+.card{
+background:#111;
+border-radius:20px;
+overflow:hidden;
+cursor:pointer;
+transition:.3s;
+border:1px solid #222;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(255,215,0,.3);
+}
+
+.card img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+margin:0;
+font-size:22px;
+}
+
+.price{
+margin-top:10px;
+font-size:26px;
+font-weight:700;
+color:#ffd700;
+}
+
+.form{
+max-width:600px;
+margin:auto;
+background:#111;
+padding:40px;
+border-radius:20px;
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.modal-content{
+width:420px;
+background:#111;
+padding:40px;
+border-radius:20px;
+}
+
+.modal-content h2,
+.modal-content h3{
+text-align:center;
+color:#ffd700;
+}
+
+.modal-content input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:#1b1b1b;
+color:white;
+}
+
+.modal-content button{
+width:100%;
+padding:15px;
+background:#ffd700;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,.85);
+backdrop-filter:blur(10px);
+z-index:999;
+box-sizing:border-box;
+}
+
+.logo{
+font-size:32px;
+font-weight:700;
+color:#ffd700;
+}
+
+.login-btn{
+background:#ffd700;
+color:black;
+padding:12px 24px;
+border-radius:10px;
+font-weight:600;
+cursor:pointer;
 }
 
 header{
@@ -172,6 +312,18 @@ font-size:45px;
 </head>
 
 <body>
+<div class="navbar">
+
+<div class="logo">
+VERNO
+</div>
+
+<div class="login-btn"
+onclick="document.getElementById('loginModal').style.display='flex'">
+로그인
+</div>
+
+</div>
 
 <header>
 <div class="logo">VERNO</div>
@@ -274,21 +426,289 @@ font-size:45px;
 
 </section>
 
-<section id="contact">
+<section id="products">
 
-<h2 class="section-title">문의하기</h2>
+<h2 class="section-title">Luxury Collection</h2>
 
-<div style="text-align:center;">
-<a href="https://open.kakao.com" class="btn">
-카카오톡 문의
-</a>
+<div class="product-grid">
+
+<div class="card" onclick="openProduct('디올 새들 지갑')">
+<img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800">
+<div class="card-content">
+<h3>디올 새들 지갑</h3>
+<p>상태 S</p>
+<div class="price">₩1,490,000</div>
+</div>
+</div>
+
+<div class="card" onclick="openProduct('샤넬 클래식 플랩백')">
+<img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=800">
+<div class="card-content">
+<h3>샤넬 클래식 플랩백</h3>
+<p>상태 A+</p>
+<div class="price">₩8,900,000</div>
+</div>
+</div>
+
+<div class="card" onclick="openProduct('루이비통 알마')">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800">
+<div class="card-content">
+<h3>루이비통 알마</h3>
+<p>상태 A</p>
+<div class="price">₩2,300,000</div>
+</div>
+</div>
+
+<div class="card" onclick="openProduct('에르메스 버킨')">
+<img src="https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=800">
+<div class="card-content">
+<h3>에르메스 버킨</h3>
+<p>상태 S</p>
+<div class="price">₩22,000,000</div>
+</div>
+</div>
+
+<div class="card" onclick="openProduct('롤렉스 서브마리너')">
+<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800">
+<div class="card-content">
+<h3>롤렉스 서브마리너</h3>
+<p>상태 S</p>
+<div class="price">₩14,500,000</div>
+</div>
+</div>
+
+<div class="card" onclick="openProduct('까르띠에 탱크')">
+<img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=800">
+<div class="card-content">
+<h3>까르띠에 탱크</h3>
+<p>상태 A+</p>
+<div class="price">₩7,500,000</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="consign">
+
+<h2 class="section-title">위탁판매 신청</h2>
+
+<div class="form">
+
+<p style="text-align:center;font-size:20px;">
+카카오톡 ID : VERNO_OFFICIAL
+</p>
+
 </div>
 
 </section>
 
-<footer>
+<div id="loginModal" class="modal">
+<div class="modal-content">
+
+<h2>VERNO 로그인</h2>
+
+<input id="loginId" placeholder="아이디">
+<input id="loginPw" type="password" placeholder="비밀번호">
+
+<button onclick="login()">로그인</button>
+
+<hr>
+
+<h3>회원가입</h3>
+
+<input id="signupId" placeholder="아이디">
+<input id="signupPw" type="password" placeholder="비밀번호">
+<input id="signupPw2" type="password" placeholder="비밀번호 확인">
+<input id="signupPhone" placeholder="전화번호">
+<input id="signupCode" placeholder="인증번호 (000000)">
+
+<button onclick="signup()">회원가입</button>
+
+</div>
+</div>
+
+<script>
+<script>
+
+let isLoggedIn =
+localStorage.getItem("vernoLogin")==="true";
+
+function openProduct(name){
+
+if(!isLoggedIn){
+
+document.getElementById("loginModal").style.display="flex";
+
+return;
+
+}
+
+showProduct(name);
+
+}
+
+function signup(){
+
+let pw=
+document.getElementById("signupPw").value;
+
+let pw2=
+document.getElementById("signupPw2").value;
+
+let code=
+document.getElementById("signupCode").value;
+
+if(pw!==pw2){
+
+alert("비밀번호가 일치하지 않습니다.");
+return;
+
+}
+
+if(code!=="000000"){
+
+alert("인증번호는 000000 입니다.");
+return;
+
+}
+
+alert("회원가입 완료!");
+
+}
+
+function login(){
+
+isLoggedIn=true;
+
+localStorage.setItem(
+"vernoLogin",
+"true"
+);
+
+document.getElementById(
+"loginModal"
+).style.display="none";
+
+alert("로그인 성공");
+
+}
+
+function logout(){
+
+isLoggedIn=false;
+
+localStorage.removeItem(
+"vernoLogin"
+);
+
+alert("로그아웃 완료");
+
+location.reload();
+
+}
+
+function showProduct(name){
+
+let info="";
+
+switch(name){
+
+case "디올 새들 지갑":
+
+info=
+`
+브랜드 : Dior
+
+상품명 : 새들 지갑
+
+상태 : S
+
+구성품 : 풀구성
+
+가격 : ₩1,490,000
+`;
+break;
+
+case "샤넬 클래식 플랩백":
+
+info=
+`
+브랜드 : Chanel
+
+상태 : A+
+
+가격 : ₩8,900,000
+`;
+break;
+
+case "루이비통 알마":
+
+info=
+`
+브랜드 : Louis Vuitton
+
+상태 : A
+
+가격 : ₩2,300,000
+`;
+break;
+
+default:
+
+info=
+`
+VERNO 상품 상세페이지
+`;
+}
+
+alert(info);
+
+}
+
+function addWish(){
+
+alert("찜 목록에 추가되었습니다.");
+
+}
+
+function addCart(){
+
+alert("장바구니에 담겼습니다.");
+
+}
+
+</script>
+
+
+</script>=
 © 2026 VERNO. All Rights Reserved.
 </footer>
 
 </body>
+<div id="productModal" class="modal">
+
+<div class="modal-content">
+
+<h2>상품 상세정보</h2>
+
+<p id="productInfo"></p>
+
+<button onclick="addWish()">
+❤️ 찜하기
+</button>
+
+<button onclick="addCart()">
+🛒 장바구니
+</button>
+
+<button onclick="
+document.getElementById('productModal').style.display='none'
+">
+닫기
+</button>
+
+</div>
+
+</div>
 </html>
